@@ -34,7 +34,6 @@ Now according to our solution :
 * Each of the services has only one responsibility and can be extended easily without affecting the other services.
 * When scaling and adding other services the new microservices will be independent to and will only communicate with the database manager.
 
-> The initial problem code is found in this [folder](./SRP/Problem/)
 
 ## 2.Open Closed Principle **OCP**
 
@@ -58,9 +57,6 @@ Now according to our solution :
 * The `ResourceAllocator` class has only one responsibility which is to allocate and free resources : If we want to extand the functionalities to not only *allocate* and *free* .
 * If the resouce has a new type we will only need to add a new class that implements the `Resource` interface and add the new type to the `ResourceAllocator` class.
 * If the resouce has a new method we will only need to add a new method to the `Resource` interface and implement it in the our resource types in custom way.
-
-> The initial problem code is found in this [folder](./OCP/Problem/)
-
 
 ## 3.Liskov Substitution Principle **LSP**
 
@@ -87,8 +83,6 @@ Now according to our solution :
 * If new general behaviours are added we will only need to add a new method to the `Duck` interface and implement it in a custom way in the new duck types.
 * If new custom behaviours are added we will only need to add a new method to the custom duck types.
 * If we want to remove the `RegularDuck` class the changes will not affect the `ElectronicDuck` class. (or the new duck variants xD)
-
-> The initial problem code is found in this [folder](./LSP/Problem/)
 
 
 ## 4.Interface Segregation Principle **ISP**
@@ -151,8 +145,6 @@ Now according to our solution :
 
 * The `EncodingModule` class,which is the high-level class responsible for encoding operations, no longer directly depends on concrete implementations but instead depends on abstractions (the `DataStorage` interface).
 * The `EncodingModuleClient` serves as the `main` class and the entry point of the program.
-
-> The initial problem code is found in this [folder](./DIP/Problem/)
 
 ## 6.Conclusion
 
