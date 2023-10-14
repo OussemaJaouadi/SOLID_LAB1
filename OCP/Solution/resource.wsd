@@ -1,0 +1,28 @@
+@startuml resource_diagram
+
+interface Resource {
+  + MarkResourceFree(): void
+  + MarkResourceBusy(): void
+  + FindFreeResource(): Resource
+}
+
+class Time implements Resource {
+  + MarkResourceFree(): void
+  + MarkResourceBusy(): void
+  + FindFreeResource(): Resource
+}
+
+class Slot implements Resource {
+  + MarkResourceFree(): void
+  + MarkResourceBusy(): void
+  + FindFreeResource(): Resource
+}
+
+class Allocator {
+  - resources: List<Resource>
+  + getResourceID(id: String): Resource
+  + allocate(resource: Resource): void
+  + free(resource: Resource): void
+}
+
+@enduml

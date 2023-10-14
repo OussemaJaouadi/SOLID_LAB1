@@ -1,0 +1,59 @@
+@startuml door_diagram
+
+interface Openable {
+    + open()
+    + close()
+}
+
+interface Lockable {
+    + lock()
+    + unlock()
+}
+
+interface ProximityAware {
+    + proximityCallback()
+}
+
+interface TimeoutAware {
+    + timeOutCallback()
+}
+
+class Sensor {
+    + isPersonClose(): boolean
+}
+
+class Timer {
+    + register(timeOut: long, callback: TimeoutAware)
+}
+
+class SensingDoor implements Openable, ProximityAware {
+    - locked: boolean
+    - opened: boolean
+    - sensor: Sensor
+    + SensingDoor(sensor: Sensor)
+    + open()
+    + close()
+    + proximityCallback()
+}
+
+class TimedDoor implements Openable, Lockable, TimeoutAware {
+    - locked: boolean
+    - opened: boolean
+    - timer: Timer
+    + TimedDoor(timer: Timer)
+    + open()
+    + close()
+    + lock()
+    + unlock()
+    + timeOutCallback()
+}
+
+Openable <|.. SensingDoor
+Openable <|.. TimedDoor
+Lockable <|.. TimedDoor
+ProximityAware <|.. SensingDoor
+TimeoutAware <|.. TimedDoor
+Sensor --> SensingDoor
+Timer --> TimedDoor
+
+@enduml

@@ -1,0 +1,36 @@
+@startuml encoding_diagram
+
+interface DataStorage {
+    + read(): String
+    + write(data: String): int
+}
+
+class FileDataStorage {
+    + read(): String
+    + write(data: String): int
+}
+
+class NetworkDataStorage {
+    + read(): String
+    + write(data: String): int
+}
+
+class EncodingModule {
+    - fileDataStorage: DataStorage
+    - networkDataStorage: DataStorage
+    + encodeWithFiles()
+    + encodeBasedOnNetworkAndDatabase()
+}
+
+class EncodingModuleClient {
+    + main(args: String[])
+}
+
+DataStorage <|.. FileDataStorage
+DataStorage <|.. NetworkDataStorage
+EncodingModule --> DataStorage
+EncodingModule --> FileDataStorage
+EncodingModule --> NetworkDataStorage
+EncodingModuleClient --> EncodingModule
+
+@enduml

@@ -1,0 +1,35 @@
+@startuml duck_diagram
+
+interface Duck {
+    + swim()
+    + quack()
+}
+
+class RegularDuck {
+    + swim()
+    + quack()
+}
+
+class ElectronicDuck {
+    - on: boolean
+    + turnOn()
+    + turnOff()
+    + swim()
+    + quack()
+}
+
+class Manager {
+    + swim(Duck... ducks)
+    + quack(Duck... ducks)
+}
+
+class Pool {
+    + run()
+}
+
+Duck <|.. RegularDuck
+Duck <|.. ElectronicDuck
+Manager --> Duck
+Pool --> Manager
+
+@enduml
